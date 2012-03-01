@@ -33,6 +33,16 @@ bool BamExporter::setMinReadLength(int minReadLength)
     return true;
 }
 
+bool BamExporter::setHeader(std::string header)
+{
+    header_ = header;
+}
+
+bool BamExporter::setRefs(BamTools::RefVector refs)
+{
+    refs_ = refs;
+}
+
 
 bool BamExporter::readSampleSheet(std::string sampleSheetName)
 {
@@ -74,6 +84,10 @@ bool BamExporter::readSampleSheet(std::string sampleSheetName)
     BamTools::BamWriter* pO = new BamTools::BamWriter();
     pO->Open(fileName, header_, refs_);
     outputParser_.barcode_file_map["NM"]=pO;
+    outputParser_.barcode_output_name_map["NM"]="Non_Matched";
+
+    //pass info to stats bundle
+//    stats_.initBarcodes(outputParser_.barcode_output_name_map);
 
     return true;
 
@@ -108,6 +122,7 @@ bool BamExporter::exportAlignment(FqEntry entry)
         //only remove if a sensible length (i.e. <30), otherwise it could span 100s of bases (which is unlikely to be tag!)
         if(what.length(0) < 30)
         {
+            stats_.numReadsWithTags+=1;
 //            std::cout << query << "\t" << query.substr(what.length(0)) << std::endl;
             query = query.substr(what.length(0));
             //final check after tag removal to see if sequence too short
@@ -125,6 +140,7 @@ bool BamExporter::exportAlignment(FqEntry entry)
     else
     {
         query = entry.sequence;
+        stats_.numReadsWithoutTags+=1;
         stats_.numOkSizeReads+=1;
     }
 
@@ -143,13 +159,22 @@ bool BamExporter::exportAlignment(FqEntry entry)
     std::map<std::string, BamTools::BamWriter*>::iterator i = outputParser_.barcode_file_map.find(barcode);
     if(i==outputParser_.barcode_file_map.end())
     {
+        stats_.numReadsForBarcode["NM"]+=1;
         outputParser_.barcode_file_map["NM"]->SaveAlignment(bamAl);
     }
     else
     {
+        stats_.numReadsForBarcode[i->first]+=1;
         i->second->SaveAlignment(bamAl);
     }
 
+    //check read lengths
+    int readLen = query.size();
+
+    if(readLen < stats_.shortestReadLen) stats_.shortestReadLen = readLen;
+    else if(readLen > stats_.longestReadLen) stats_.longestReadLen = readLen;
+
+    stats_.totalBases+=readLen;
     return true;
 
 }
@@ -169,4 +194,9 @@ void BamExporter::closeFiles()
 TorrentReadStatsBundle& BamExporter::getStats()
 {
     return stats_;
+}
+
+OutputParser& BamExporter::getOutputParser()
+{
+    return outputParser_;
 }

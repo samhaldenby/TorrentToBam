@@ -26,12 +26,15 @@ class BamExporter
 
     public:
         BamExporter(int barcodeLength, int minReadLength);
+        bool setHeader(std::string header);
+        bool setRefs(BamTools::RefVector refs);
         bool setBarcodeLength(int barcodeLength);
         bool setMinReadLength(int minReadLength);
         bool readSampleSheet(std::string sampleSheetName);
         bool exportAlignment(FqEntry entry);
         void closeFiles();
         TorrentReadStatsBundle& getStats();
+        OutputParser& getOutputParser();
 };
 
 

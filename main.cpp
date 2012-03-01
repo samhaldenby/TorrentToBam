@@ -6,6 +6,7 @@
 
 #include "FqReader.hpp"
 #include "BamExporter.hpp"
+#include "XmlWriterTorrent.hpp"
 
 //naughty globals!
 const int DEFAULT_BARCODE_LENGTH = 4;
@@ -126,6 +127,8 @@ int main(int argc, char**argv)
     BamExporter bamExporter(DEFAULT_BARCODE_LENGTH, DEFAULT_MIN_READ_LENGTH);
     bamExporter.setBarcodeLength(barcodeLength);
     bamExporter.setMinReadLength(minReadLength);
+    bamExporter.setHeader(header);
+    bamExporter.setRefs(refs);
     if(!bamExporter.readSampleSheet(sampleSheetName))
     {
         std::cerr << "ERROR: Failed to read sample sheet '" << sampleSheetName << "'" << std::endl;
@@ -156,13 +159,24 @@ int main(int argc, char**argv)
         }
     }
 
+    //calculate final stats
+    bamExporter.getStats().generateFinalStats();
+
     std::cout << "\r";
     bamExporter.getStats().report();
+    std::cout << std::endl;
+    bamExporter.getStats().reportBarcodeFrequencies();
+    bamExporter.getStats().reportReadLengthStats();
 
+
+    //create xml output
+    XmlWriterTorrent xmlWriter(&bamExporter);
+    xmlWriter.createXml();
 
     //clean up
     fqReader.close();
     bamExporter.closeFiles();
+
 
 
 
