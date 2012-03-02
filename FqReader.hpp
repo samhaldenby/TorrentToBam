@@ -6,10 +6,10 @@
 
 struct FqEntry
 {
-    std::string header1;
-    std::string sequence;
-    std::string header2;
-    std::string quality;
+    std::string header1;    //!< First header line beginning with '@'
+    std::string sequence;   //!< Sequence line
+    std::string header2;    //!< Second header line beginning with '+'
+    std::string quality;    //!< Quality score line
 };
 
 

@@ -9,8 +9,8 @@
 
 struct OutputParser
 {
-    std::map<std::string, BamTools::BamWriter*> barcode_file_map;
-    std::map<std::string, std::string> barcode_output_name_map;
+    std::map<std::string, BamTools::BamWriter*> barcode_file_map;   //!< Map of barcodes => file handles
+    std::map<std::string, std::string> barcode_output_name_map;     //!< Map of barcodes => file names
 };
 
 class BamExporter

@@ -1,5 +1,11 @@
 #include "BamExporter.hpp"
 
+//! Constructor
+
+//! Creates Exporter class and initialises barcode length and minimum acceptable read length (post tag/barcode trimming).
+//! Sets regular expression pattern for tag searching.
+//!@param[in] barcodeLength Length of barcode sequence.
+//!@param[in] minReadLength Minimum acceptable read length, post trimming.
 BamExporter::BamExporter(int barcodeLength, int minReadLength) : barcodeLength_(barcodeLength), minReadLength_(minReadLength)
 {
     //set barcode regex
@@ -8,6 +14,11 @@ BamExporter::BamExporter(int barcodeLength, int minReadLength) : barcodeLength_(
 
 
 
+//! Changes barcode length
+
+//! Checks lower but not upper bounds, i.e. must be greater than 0
+//!@param[in] barcodeLength Length of barcode sequence.
+//!@return Operation success/failure
 bool BamExporter::setBarcodeLength(int barcodeLength)
 {
     if(barcodeLength <= 0)
@@ -21,6 +32,14 @@ bool BamExporter::setBarcodeLength(int barcodeLength)
     return true;
 }
 
+
+
+
+//! Changes minimum acceptable read length, post trimming
+
+//! Checks lower but not upper bounds, i.e. must be greater than 0
+//!@param[in] minReadLength Minimum acceptable read length.
+//!@return Operation success/failure
 bool BamExporter::setMinReadLength(int minReadLength)
 {
     if(minReadLength <= 0)
@@ -33,17 +52,40 @@ bool BamExporter::setMinReadLength(int minReadLength)
     return true;
 }
 
+
+
+//! Set BAM header for output files
+
+//! User must format header string according to SAM specifications
+//!@param[in] header Formatted header.
+//!@return Operation success/failure
 bool BamExporter::setHeader(std::string header)
 {
     header_ = header;
 }
 
+
+
+//! Set references that BAM file was aligned to
+
+//! Only required as BamTools API requires this information despite using unaligned BAM file output.
+//! Therefore, this is usually an empty vector.
+//!@param[in] refs References (usually empty RefVector)
+//!@return Operation success/failure
 bool BamExporter::setRefs(BamTools::RefVector refs)
 {
     refs_ = refs;
 }
 
 
+
+//! Reads sample sheet information
+
+//! Extracts information from sample sheet. Sample sheet must be tab-seperated with headers
+//! Columns are 'Sample Name' and 'Barcode Sequence'.
+//! Prepares output files based on this information, that is stored in internal OutputParser class
+//!@param[in] sampleSheetName File name of sample sheet
+//!@return Operation success/failure
 bool BamExporter::readSampleSheet(std::string sampleSheetName)
 {
     std::ifstream input;
@@ -94,7 +136,14 @@ bool BamExporter::readSampleSheet(std::string sampleSheetName)
 }
 
 
+//! Writes valid reads to correct BAM file
 
+//! Determines (1) which file to write to based on barcode sequence,
+//! (2) removes any tag sequences from read, along with barcode,
+//! (3) writes to correct BAM file if read is sufficiently long.
+//! Also keeps track of run statistics.
+//!@param[in] entry FASTQ entry
+//!@return True if read was long enough to export, false if not.
 bool BamExporter::exportAlignment(FqEntry entry)
 {
     //iterate stats counters
@@ -109,21 +158,17 @@ bool BamExporter::exportAlignment(FqEntry entry)
     }
     BamTools::BamAlignment bamAl;
 
-//    sregex rex = bol >> "TGTA" >> _w >> *(~_n) >> "CAGT";
+
     boost::xpressive::smatch what;
     std::string query = entry.sequence.substr(barcodeLength_);
 
     //does regex hit query?
     if(boost::xpressive::regex_search(query.begin(), query.end(), what, rex_))
     {
-//        std::cout << "size: " << what.size() << "\t" << what.length(0) << "\t" << query.size() << std::endl;
-//        std::cout << "TRUE: (" << what[1] << ")\t" << what[0] << std::endl;
-//        std::cout << what.length(0) << std::endl;
         //only remove if a sensible length (i.e. <30), otherwise it could span 100s of bases (which is unlikely to be tag!)
         if(what.length(0) < 30)
         {
             stats_.numReadsWithTags+=1;
-//            std::cout << query << "\t" << query.substr(what.length(0)) << std::endl;
             query = query.substr(what.length(0));
             //final check after tag removal to see if sequence too short
             if(query.size() < minReadLength_)
@@ -133,13 +178,11 @@ bool BamExporter::exportAlignment(FqEntry entry)
                 return false;
             }
         }
-
-//        regexMatch+=1;
     }
     //if not
     else
     {
-        query = entry.sequence;
+//        query = entry.sequence;
         stats_.numReadsWithoutTags+=1;
         stats_.numOkSizeReads+=1;
     }
@@ -159,12 +202,28 @@ bool BamExporter::exportAlignment(FqEntry entry)
     std::map<std::string, BamTools::BamWriter*>::iterator i = outputParser_.barcode_file_map.find(barcode);
     if(i==outputParser_.barcode_file_map.end())
     {
+        //check shortestRead has been initialised
+        if(stats_.shortestReadLenForBarcode["NM"]==0) stats_.shortestReadLenForBarcode["NM"]=16000;
+
+        //save info
         stats_.numReadsForBarcode["NM"]+=1;
+        stats_.totalBasesForBarcode["NM"]+=query.size();
+        if(query.size() < stats_.shortestReadLenForBarcode["NM"]) stats_.shortestReadLenForBarcode["NM"] = query.size();
+        else if(query.size() > stats_.longestReadLenForBarcode["NM"]) stats_.longestReadLenForBarcode["NM"] = query.size();
+
+        //output read
         outputParser_.barcode_file_map["NM"]->SaveAlignment(bamAl);
     }
     else
     {
+        //check shortestRead has been initialised
+        if(stats_.shortestReadLenForBarcode[i->first]==0) stats_.shortestReadLenForBarcode[i->first]=16000;
         stats_.numReadsForBarcode[i->first]+=1;
+        stats_.totalBasesForBarcode[i->first]+=query.size();
+        if(query.size() < stats_.shortestReadLenForBarcode[i->first]) stats_.shortestReadLenForBarcode[i->first] = query.size();
+        else if(query.size() > stats_.longestReadLenForBarcode[i->first]) stats_.longestReadLenForBarcode[i->first] = query.size();
+
+        //output read
         i->second->SaveAlignment(bamAl);
     }
 
@@ -174,12 +233,17 @@ bool BamExporter::exportAlignment(FqEntry entry)
     if(readLen < stats_.shortestReadLen) stats_.shortestReadLen = readLen;
     else if(readLen > stats_.longestReadLen) stats_.longestReadLen = readLen;
 
+
     stats_.totalBases+=readLen;
     return true;
 
 }
 
 
+
+//! Closes all export file handles
+
+//! Deletes each file handle so no memory leakage.
 void BamExporter::closeFiles()
 {
     std::map<std::string, BamTools::BamWriter*>::iterator iO = outputParser_.barcode_file_map.begin();
@@ -191,11 +255,21 @@ void BamExporter::closeFiles()
     }
 }
 
+
+
+//! Getter for internal stats bundle class
+
+//!@return Reference to stats bundle
 TorrentReadStatsBundle& BamExporter::getStats()
 {
     return stats_;
 }
 
+
+
+//! Getter for internal output parser class
+
+//!@return Reference to output parser
 OutputParser& BamExporter::getOutputParser()
 {
     return outputParser_;
