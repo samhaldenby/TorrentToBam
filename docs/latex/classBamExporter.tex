@@ -1,0 +1,210 @@
+\hypertarget{classBamExporter}{\section{Bam\-Exporter Class Reference}
+\label{classBamExporter}\index{Bam\-Exporter@{Bam\-Exporter}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBamExporter_a4aa0150613ccac4d289394cfbecf549a}{Bam\-Exporter} (int barcode\-Length, int min\-Read\-Length)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classBamExporter_a9b705e076ec0bb23a402a2fb9bc86b48}{set\-Header} (std\-::string header)
+\begin{DoxyCompactList}\small\item\em Set B\-A\-M header for output files. \end{DoxyCompactList}\item 
+bool \hyperlink{classBamExporter_a71363ad8a73bbeb381c76412beec2acd}{set\-Refs} (Bam\-Tools\-::\-Ref\-Vector refs)
+\begin{DoxyCompactList}\small\item\em Set references that B\-A\-M file was aligned to. \end{DoxyCompactList}\item 
+bool \hyperlink{classBamExporter_ac16d3a4dde604a7d4ae0cdfecd656d71}{set\-Barcode\-Length} (int barcode\-Length)
+\begin{DoxyCompactList}\small\item\em Changes barcode length. \end{DoxyCompactList}\item 
+bool \hyperlink{classBamExporter_acf521439c031655b0d719a94f5e9092d}{set\-Min\-Read\-Length} (int min\-Read\-Length)
+\begin{DoxyCompactList}\small\item\em Changes minimum acceptable read length, post trimming. \end{DoxyCompactList}\item 
+bool \hyperlink{classBamExporter_a939c932d53245c641a9d3fc91bbf2789}{read\-Sample\-Sheet} (std\-::string sample\-Sheet\-Name)
+\begin{DoxyCompactList}\small\item\em Reads sample sheet information. \end{DoxyCompactList}\item 
+bool \hyperlink{classBamExporter_a14a8665ed1e68a3cb2d4926e450355cf}{export\-Alignment} (\hyperlink{structFqEntry}{Fq\-Entry} entry)
+\begin{DoxyCompactList}\small\item\em Writes valid reads to correct B\-A\-M file. \end{DoxyCompactList}\item 
+void \hyperlink{classBamExporter_a42f6aaf2a37c27d959f33861f969e9a0}{close\-Files} ()
+\begin{DoxyCompactList}\small\item\em Closes all export file handles. \end{DoxyCompactList}\item 
+\hyperlink{structTorrentReadStatsBundle}{Torrent\-Read\-Stats\-Bundle} \& \hyperlink{classBamExporter_ac519b7d750628080431a8899b6846c48}{get\-Stats} ()
+\begin{DoxyCompactList}\small\item\em Getter for internal stats bundle class. \end{DoxyCompactList}\item 
+\hyperlink{structOutputParser}{Output\-Parser} \& \hyperlink{classBamExporter_a852c36278e23d728329d5c6d71e987eb}{get\-Output\-Parser} ()
+\begin{DoxyCompactList}\small\item\em Getter for internal output parser class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBamExporter_a4aa0150613ccac4d289394cfbecf549a}{\index{Bam\-Exporter@{Bam\-Exporter}!Bam\-Exporter@{Bam\-Exporter}}
+\index{Bam\-Exporter@{Bam\-Exporter}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{Bam\-Exporter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bam\-Exporter\-::\-Bam\-Exporter} (
+\begin{DoxyParamCaption}
+\item[{int}]{barcode\-Length, }
+\item[{int}]{min\-Read\-Length}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_a4aa0150613ccac4d289394cfbecf549a}
+
+
+Constructor. 
+
+Creates Exporter class and initialises barcode length and minimum acceptable read length (post tag/barcode trimming). Sets regular expression pattern for tag searching. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em barcode\-Length} & Length of barcode sequence. \\
+\hline
+\mbox{\tt in}  & {\em min\-Read\-Length} & Minimum acceptable read length, post trimming. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBamExporter_a42f6aaf2a37c27d959f33861f969e9a0}{\index{Bam\-Exporter@{Bam\-Exporter}!close\-Files@{close\-Files}}
+\index{close\-Files@{close\-Files}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{close\-Files}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Bam\-Exporter\-::close\-Files} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_a42f6aaf2a37c27d959f33861f969e9a0}
+
+
+Closes all export file handles. 
+
+Deletes each file handle so no memory leakage. \hypertarget{classBamExporter_a14a8665ed1e68a3cb2d4926e450355cf}{\index{Bam\-Exporter@{Bam\-Exporter}!export\-Alignment@{export\-Alignment}}
+\index{export\-Alignment@{export\-Alignment}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{export\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::export\-Alignment} (
+\begin{DoxyParamCaption}
+\item[{{\bf Fq\-Entry}}]{entry}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_a14a8665ed1e68a3cb2d4926e450355cf}
+
+
+Writes valid reads to correct B\-A\-M file. 
+
+Determines (1) which file to write to based on barcode sequence, (2) removes any tag sequences from read, along with barcode, (3) writes to correct B\-A\-M file if read is sufficiently long. Also keeps track of run statistics. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em entry} & F\-A\-S\-T\-Q entry \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if read was long enough to export, false if not. 
+\end{DoxyReturn}
+\hypertarget{classBamExporter_a852c36278e23d728329d5c6d71e987eb}{\index{Bam\-Exporter@{Bam\-Exporter}!get\-Output\-Parser@{get\-Output\-Parser}}
+\index{get\-Output\-Parser@{get\-Output\-Parser}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{get\-Output\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Output\-Parser} \& {\bf Bam\-Exporter\-::get\-Output\-Parser} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_a852c36278e23d728329d5c6d71e987eb}
+
+
+Getter for internal output parser class. 
+
+\begin{DoxyReturn}{Returns}
+Reference to output parser 
+\end{DoxyReturn}
+\hypertarget{classBamExporter_ac519b7d750628080431a8899b6846c48}{\index{Bam\-Exporter@{Bam\-Exporter}!get\-Stats@{get\-Stats}}
+\index{get\-Stats@{get\-Stats}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{get\-Stats}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Torrent\-Read\-Stats\-Bundle} \& {\bf Bam\-Exporter\-::get\-Stats} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_ac519b7d750628080431a8899b6846c48}
+
+
+Getter for internal stats bundle class. 
+
+\begin{DoxyReturn}{Returns}
+Reference to stats bundle 
+\end{DoxyReturn}
+\hypertarget{classBamExporter_a939c932d53245c641a9d3fc91bbf2789}{\index{Bam\-Exporter@{Bam\-Exporter}!read\-Sample\-Sheet@{read\-Sample\-Sheet}}
+\index{read\-Sample\-Sheet@{read\-Sample\-Sheet}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{read\-Sample\-Sheet}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::read\-Sample\-Sheet} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{sample\-Sheet\-Name}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_a939c932d53245c641a9d3fc91bbf2789}
+
+
+Reads sample sheet information. 
+
+Extracts information from sample sheet. Sample sheet must be tab-\/seperated with headers Columns are 'Sample Name' and 'Barcode Sequence'. Prepares output files based on this information, that is stored in internal \hyperlink{structOutputParser}{Output\-Parser} class 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sample\-Sheet\-Name} & File name of sample sheet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Operation success/failure 
+\end{DoxyReturn}
+\hypertarget{classBamExporter_ac16d3a4dde604a7d4ae0cdfecd656d71}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Barcode\-Length@{set\-Barcode\-Length}}
+\index{set\-Barcode\-Length@{set\-Barcode\-Length}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{set\-Barcode\-Length}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::set\-Barcode\-Length} (
+\begin{DoxyParamCaption}
+\item[{int}]{barcode\-Length}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_ac16d3a4dde604a7d4ae0cdfecd656d71}
+
+
+Changes barcode length. 
+
+Checks lower but not upper bounds, i.\-e. must be greater than 0 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em barcode\-Length} & Length of barcode sequence. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Operation success/failure 
+\end{DoxyReturn}
+\hypertarget{classBamExporter_a9b705e076ec0bb23a402a2fb9bc86b48}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Header@{set\-Header}}
+\index{set\-Header@{set\-Header}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{set\-Header}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::set\-Header} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{header}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_a9b705e076ec0bb23a402a2fb9bc86b48}
+
+
+Set B\-A\-M header for output files. 
+
+User must format header string according to S\-A\-M specifications 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em header} & Formatted header. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Operation success/failure 
+\end{DoxyReturn}
+\hypertarget{classBamExporter_acf521439c031655b0d719a94f5e9092d}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Min\-Read\-Length@{set\-Min\-Read\-Length}}
+\index{set\-Min\-Read\-Length@{set\-Min\-Read\-Length}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{set\-Min\-Read\-Length}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::set\-Min\-Read\-Length} (
+\begin{DoxyParamCaption}
+\item[{int}]{min\-Read\-Length}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_acf521439c031655b0d719a94f5e9092d}
+
+
+Changes minimum acceptable read length, post trimming. 
+
+Checks lower but not upper bounds, i.\-e. must be greater than 0 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em min\-Read\-Length} & Minimum acceptable read length. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Operation success/failure 
+\end{DoxyReturn}
+\hypertarget{classBamExporter_a71363ad8a73bbeb381c76412beec2acd}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Refs@{set\-Refs}}
+\index{set\-Refs@{set\-Refs}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{set\-Refs}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::set\-Refs} (
+\begin{DoxyParamCaption}
+\item[{Bam\-Tools\-::\-Ref\-Vector}]{refs}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_a71363ad8a73bbeb381c76412beec2acd}
+
+
+Set references that B\-A\-M file was aligned to. 
+
+Only required as Bam\-Tools A\-P\-I requires this information despite using unaligned B\-A\-M file output. Therefore, this is usually an empty vector. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em refs} & References (usually empty Ref\-Vector) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Operation success/failure 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Bam\-Exporter.\-hpp\item 
+Bam\-Exporter.\-cpp\end{DoxyCompactItemize}

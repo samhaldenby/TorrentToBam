@@ -1,0 +1,84 @@
+\hypertarget{classFqReader}{\section{Fq\-Reader Class Reference}
+\label{classFqReader}\index{Fq\-Reader@{Fq\-Reader}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classFqReader_aef2f13baf7de62a57c087051c198c43f}{open} (std\-::string file\-Name)
+\begin{DoxyCompactList}\small\item\em Opens a F\-A\-S\-T\-Q file. \end{DoxyCompactList}\item 
+bool \hyperlink{classFqReader_a5bd403040340c6a4ca52d58d08c60f8a}{close} ()
+\begin{DoxyCompactList}\small\item\em Closes F\-A\-S\-T\-Q file. \end{DoxyCompactList}\item 
+\hyperlink{structFqEntry}{Fq\-Entry} \hyperlink{classFqReader_a5ce409155c46c8e5d11c3d0de99f6ce7}{get\-Next\-Entry} ()
+\begin{DoxyCompactList}\small\item\em Grabs next entry from F\-A\-S\-T\-Q file. \end{DoxyCompactList}\item 
+bool \hyperlink{classFqReader_a94ff4b1604d04a26c81544e6228d5b1f}{has\-Next\-Entry} ()
+\begin{DoxyCompactList}\small\item\em Checks if there are more entries to read from open F\-A\-S\-T\-Q file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFqReader_a5bd403040340c6a4ca52d58d08c60f8a}{\index{Fq\-Reader@{Fq\-Reader}!close@{close}}
+\index{close@{close}!FqReader@{Fq\-Reader}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Fq\-Reader\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFqReader_a5bd403040340c6a4ca52d58d08c60f8a}
+
+
+Closes F\-A\-S\-T\-Q file. 
+
+Closes currently open F\-A\-S\-T\-Q file. Doesn't care if one is open or not, so long is it is closed after the operation. Reports failure to std\-::cerr. \begin{DoxyReturn}{Returns}
+Close operation success/failure. 
+\end{DoxyReturn}
+\hypertarget{classFqReader_a5ce409155c46c8e5d11c3d0de99f6ce7}{\index{Fq\-Reader@{Fq\-Reader}!get\-Next\-Entry@{get\-Next\-Entry}}
+\index{get\-Next\-Entry@{get\-Next\-Entry}!FqReader@{Fq\-Reader}}
+\subsubsection[{get\-Next\-Entry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fq\-Entry} {\bf Fq\-Reader\-::get\-Next\-Entry} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFqReader_a5ce409155c46c8e5d11c3d0de99f6ce7}
+
+
+Grabs next entry from F\-A\-S\-T\-Q file. 
+
+User must open file first with \hyperlink{classFqReader_aef2f13baf7de62a57c087051c198c43f}{open()}. Does not check file structure is correct. Reports failure to std\-::cerr. \begin{DoxyReturn}{Returns}
+Entry read from file. 
+\end{DoxyReturn}
+\hypertarget{classFqReader_a94ff4b1604d04a26c81544e6228d5b1f}{\index{Fq\-Reader@{Fq\-Reader}!has\-Next\-Entry@{has\-Next\-Entry}}
+\index{has\-Next\-Entry@{has\-Next\-Entry}!FqReader@{Fq\-Reader}}
+\subsubsection[{has\-Next\-Entry}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Fq\-Reader\-::has\-Next\-Entry} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFqReader_a94ff4b1604d04a26c81544e6228d5b1f}
+
+
+Checks if there are more entries to read from open F\-A\-S\-T\-Q file. 
+
+Essentially checks if any more lines to read. \begin{DoxyReturn}{Returns}
+True if has more entries. 
+\end{DoxyReturn}
+\hypertarget{classFqReader_aef2f13baf7de62a57c087051c198c43f}{\index{Fq\-Reader@{Fq\-Reader}!open@{open}}
+\index{open@{open}!FqReader@{Fq\-Reader}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Fq\-Reader\-::open} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-Name}
+\end{DoxyParamCaption}
+)}}\label{classFqReader_aef2f13baf7de62a57c087051c198c43f}
+
+
+Opens a F\-A\-S\-T\-Q file. 
+
+Opens a F\-A\-S\-T\-Q file for reading. Does not check whether file is correct or not. Reports failure to std\-::cerr. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & The name of the file to open. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Open operation success/failure. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Fq\-Reader.\-hpp\item 
+Fq\-Reader.\-cpp\end{DoxyCompactItemize}

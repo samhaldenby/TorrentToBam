@@ -1,0 +1,134 @@
+\hypertarget{structTorrentReadStatsBundle}{\section{Torrent\-Read\-Stats\-Bundle Struct Reference}
+\label{structTorrentReadStatsBundle}\index{Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structTorrentReadStatsBundle_aa7901fa627c555d0a9cefa3987c3f8ad}{Torrent\-Read\-Stats\-Bundle} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{structTorrentReadStatsBundle_a02703af2b1e606a6c948ea7ff3c183cc}{report} ()
+\begin{DoxyCompactList}\small\item\em Writes basic stats to console. \end{DoxyCompactList}\item 
+void \hyperlink{structTorrentReadStatsBundle_a2e24c35574341702bb1367d78a73e261}{report\-Barcode\-Frequencies} ()
+\begin{DoxyCompactList}\small\item\em Writes barcode stats to console. \end{DoxyCompactList}\item 
+void \hyperlink{structTorrentReadStatsBundle_aff8775ddcc7faa8219ff15f92037dec8}{report\-Read\-Length\-Stats} ()
+\begin{DoxyCompactList}\small\item\em Writes read length stats to console. \end{DoxyCompactList}\item 
+void \hyperlink{structTorrentReadStatsBundle_ad061b13d49d2f5f942ea3961b45e5e31}{generate\-Final\-Stats} ()
+\begin{DoxyCompactList}\small\item\em Performs final stats calculations on bundle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structTorrentReadStatsBundle_a312eaafbe765c12dabf9c74c5047e9d4}{long \hyperlink{structTorrentReadStatsBundle_a312eaafbe765c12dabf9c74c5047e9d4}{num\-Reads}}\label{structTorrentReadStatsBundle_a312eaafbe765c12dabf9c74c5047e9d4}
+
+\begin{DoxyCompactList}\small\item\em Total number of reads including those too short. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_aadd3dedadddb30c2c6c8116250e5e915}{long \hyperlink{structTorrentReadStatsBundle_aadd3dedadddb30c2c6c8116250e5e915}{num\-Too\-Short\-Reads}}\label{structTorrentReadStatsBundle_aadd3dedadddb30c2c6c8116250e5e915}
+
+\begin{DoxyCompactList}\small\item\em Total number of reads that are shorter than minimum required read length either before or after tag/barcode trimming. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a88186ff7653c041eb76daf84ac244806}{long \hyperlink{structTorrentReadStatsBundle_a88186ff7653c041eb76daf84ac244806}{num\-Too\-Short\-Reads\-Before\-Tag\-Removal}}\label{structTorrentReadStatsBundle_a88186ff7653c041eb76daf84ac244806}
+
+\begin{DoxyCompactList}\small\item\em Total number of reads that are shorter than minimum required read length prior to tag/barcode trimming. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_ad5611072f42ff29fbd46e8839af41971}{long \hyperlink{structTorrentReadStatsBundle_ad5611072f42ff29fbd46e8839af41971}{num\-Too\-Short\-Reads\-After\-Tag\-Removal}}\label{structTorrentReadStatsBundle_ad5611072f42ff29fbd46e8839af41971}
+
+\begin{DoxyCompactList}\small\item\em Total number of reads that are shorter than minimum required read length after tag/barcode trimming. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a4de93101d7aa7c1e9297345b4faf5618}{long \hyperlink{structTorrentReadStatsBundle_a4de93101d7aa7c1e9297345b4faf5618}{num\-Ok\-Size\-Reads}}\label{structTorrentReadStatsBundle_a4de93101d7aa7c1e9297345b4faf5618}
+
+\begin{DoxyCompactList}\small\item\em Total number of reads that met required read length critera. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a5f51b3facb0d61cb363f1a740a7a169c}{long \hyperlink{structTorrentReadStatsBundle_a5f51b3facb0d61cb363f1a740a7a169c}{num\-Reads\-With\-Tags}}\label{structTorrentReadStatsBundle_a5f51b3facb0d61cb363f1a740a7a169c}
+
+\begin{DoxyCompactList}\small\item\em Total number of reads that contained a tag sequence. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a08e8566ad4ab2852637551655842ca6f}{long \hyperlink{structTorrentReadStatsBundle_a08e8566ad4ab2852637551655842ca6f}{num\-Reads\-Without\-Tags}}\label{structTorrentReadStatsBundle_a08e8566ad4ab2852637551655842ca6f}
+
+\begin{DoxyCompactList}\small\item\em Total number of reads that did not contain a tag sequence. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a6107de9c288b56411433a8676e402867}{int \hyperlink{structTorrentReadStatsBundle_a6107de9c288b56411433a8676e402867}{shortest\-Read\-Len}}\label{structTorrentReadStatsBundle_a6107de9c288b56411433a8676e402867}
+
+\begin{DoxyCompactList}\small\item\em Length of shortest exported read from run. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a948ede5638d944ec273ffbe580906c1c}{int \hyperlink{structTorrentReadStatsBundle_a948ede5638d944ec273ffbe580906c1c}{longest\-Read\-Len}}\label{structTorrentReadStatsBundle_a948ede5638d944ec273ffbe580906c1c}
+
+\begin{DoxyCompactList}\small\item\em Length of longest exported read from run. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a10543cd8c069570cab75dab13e8ccc00}{int \hyperlink{structTorrentReadStatsBundle_a10543cd8c069570cab75dab13e8ccc00}{average\-Read\-Len}}\label{structTorrentReadStatsBundle_a10543cd8c069570cab75dab13e8ccc00}
+
+\begin{DoxyCompactList}\small\item\em Average length of exported reads from run. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_aa31ec9f597594875ada109a0c4d6afb7}{int \hyperlink{structTorrentReadStatsBundle_aa31ec9f597594875ada109a0c4d6afb7}{total\-Bases}}\label{structTorrentReadStatsBundle_aa31ec9f597594875ada109a0c4d6afb7}
+
+\begin{DoxyCompactList}\small\item\em Total number of exported bases from run. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a570d23081e339c95a30cd8d9476f4919}{std\-::map$<$ std\-::string, long $>$ \hyperlink{structTorrentReadStatsBundle_a570d23081e339c95a30cd8d9476f4919}{num\-Reads\-For\-Barcode}}\label{structTorrentReadStatsBundle_a570d23081e339c95a30cd8d9476f4919}
+
+\begin{DoxyCompactList}\small\item\em Number of reads exported for each barcoded sample. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a7a17b748a3147d2c92ad62d59732f672}{std\-::map$<$ std\-::string, int $>$ \hyperlink{structTorrentReadStatsBundle_a7a17b748a3147d2c92ad62d59732f672}{shortest\-Read\-Len\-For\-Barcode}}\label{structTorrentReadStatsBundle_a7a17b748a3147d2c92ad62d59732f672}
+
+\begin{DoxyCompactList}\small\item\em Length of shortest read exported for each barcoded sample. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a00f7ed03af6f4c72c21cd5e9e4edff4b}{std\-::map$<$ std\-::string, int $>$ \hyperlink{structTorrentReadStatsBundle_a00f7ed03af6f4c72c21cd5e9e4edff4b}{longest\-Read\-Len\-For\-Barcode}}\label{structTorrentReadStatsBundle_a00f7ed03af6f4c72c21cd5e9e4edff4b}
+
+\begin{DoxyCompactList}\small\item\em Length of longest read exported for each barcoded sample. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a9fdf483a6f4ef91a3340131c050a45ac}{std\-::map$<$ std\-::string, int $>$ \hyperlink{structTorrentReadStatsBundle_a9fdf483a6f4ef91a3340131c050a45ac}{average\-Read\-Len\-For\-Barcode}}\label{structTorrentReadStatsBundle_a9fdf483a6f4ef91a3340131c050a45ac}
+
+\begin{DoxyCompactList}\small\item\em Average length of exported reads for each barcoded sample. \end{DoxyCompactList}\item 
+\hypertarget{structTorrentReadStatsBundle_a4efa85be0a610957ed86e56b22c48568}{std\-::map$<$ std\-::string, int $>$ \hyperlink{structTorrentReadStatsBundle_a4efa85be0a610957ed86e56b22c48568}{total\-Bases\-For\-Barcode}}\label{structTorrentReadStatsBundle_a4efa85be0a610957ed86e56b22c48568}
+
+\begin{DoxyCompactList}\small\item\em Number of exported bases for each sample. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structTorrentReadStatsBundle_aa7901fa627c555d0a9cefa3987c3f8ad}{\index{Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}!Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}}
+\index{Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}!TorrentReadStatsBundle@{Torrent\-Read\-Stats\-Bundle}}
+\subsubsection[{Torrent\-Read\-Stats\-Bundle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Torrent\-Read\-Stats\-Bundle\-::\-Torrent\-Read\-Stats\-Bundle} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structTorrentReadStatsBundle_aa7901fa627c555d0a9cefa3987c3f8ad}
+
+
+Constructor. 
+
+Initialises all variables that require it. 
+
+\subsection{Member Function Documentation}
+\hypertarget{structTorrentReadStatsBundle_ad061b13d49d2f5f942ea3961b45e5e31}{\index{Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}!generate\-Final\-Stats@{generate\-Final\-Stats}}
+\index{generate\-Final\-Stats@{generate\-Final\-Stats}!TorrentReadStatsBundle@{Torrent\-Read\-Stats\-Bundle}}
+\subsubsection[{generate\-Final\-Stats}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Torrent\-Read\-Stats\-Bundle\-::generate\-Final\-Stats} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structTorrentReadStatsBundle_ad061b13d49d2f5f942ea3961b45e5e31}
+
+
+Performs final stats calculations on bundle. 
+
+Calculates average read length sizes for run and for each barcode. \hypertarget{structTorrentReadStatsBundle_a02703af2b1e606a6c948ea7ff3c183cc}{\index{Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}!report@{report}}
+\index{report@{report}!TorrentReadStatsBundle@{Torrent\-Read\-Stats\-Bundle}}
+\subsubsection[{report}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Torrent\-Read\-Stats\-Bundle\-::report} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structTorrentReadStatsBundle_a02703af2b1e606a6c948ea7ff3c183cc}
+
+
+Writes basic stats to console. 
+
+Reports \# reads, \# good reads, \# bad reads (too short), \# reads too short before tag/barcode removal, \# reads too short after tag/barcode removal, \# reads with tags, \# reads without tags. For debugging only. Deprecated. \hypertarget{structTorrentReadStatsBundle_a2e24c35574341702bb1367d78a73e261}{\index{Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}!report\-Barcode\-Frequencies@{report\-Barcode\-Frequencies}}
+\index{report\-Barcode\-Frequencies@{report\-Barcode\-Frequencies}!TorrentReadStatsBundle@{Torrent\-Read\-Stats\-Bundle}}
+\subsubsection[{report\-Barcode\-Frequencies}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Torrent\-Read\-Stats\-Bundle\-::report\-Barcode\-Frequencies} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structTorrentReadStatsBundle_a2e24c35574341702bb1367d78a73e261}
+
+
+Writes barcode stats to console. 
+
+Reports \# good reads for each barcode. For debugging only. Deprecated. \hypertarget{structTorrentReadStatsBundle_aff8775ddcc7faa8219ff15f92037dec8}{\index{Torrent\-Read\-Stats\-Bundle@{Torrent\-Read\-Stats\-Bundle}!report\-Read\-Length\-Stats@{report\-Read\-Length\-Stats}}
+\index{report\-Read\-Length\-Stats@{report\-Read\-Length\-Stats}!TorrentReadStatsBundle@{Torrent\-Read\-Stats\-Bundle}}
+\subsubsection[{report\-Read\-Length\-Stats}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Torrent\-Read\-Stats\-Bundle\-::report\-Read\-Length\-Stats} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structTorrentReadStatsBundle_aff8775ddcc7faa8219ff15f92037dec8}
+
+
+Writes read length stats to console. 
+
+For debugging only. Deprecated 
+
+The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Torrent\-Read\-Stats\-Bundle.\-hpp\item 
+Torrent\-Read\-Stats\-Bundle.\-cpp\end{DoxyCompactItemize}
