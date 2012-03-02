@@ -6,10 +6,12 @@
 \item 
 \hyperlink{classBamExporter_a4aa0150613ccac4d289394cfbecf549a}{Bam\-Exporter} (int barcode\-Length, int min\-Read\-Length)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-bool \hyperlink{classBamExporter_a9b705e076ec0bb23a402a2fb9bc86b48}{set\-Header} (std\-::string header)
+void \hyperlink{classBamExporter_a0ccdf2f047acc9428a657aacfbca97f1}{set\-Header} (std\-::string header)
 \begin{DoxyCompactList}\small\item\em Set B\-A\-M header for output files. \end{DoxyCompactList}\item 
-bool \hyperlink{classBamExporter_a71363ad8a73bbeb381c76412beec2acd}{set\-Refs} (Bam\-Tools\-::\-Ref\-Vector refs)
+void \hyperlink{classBamExporter_a677b8c5352998f664dbe06c722accb33}{set\-Refs} (Bam\-Tools\-::\-Ref\-Vector refs)
 \begin{DoxyCompactList}\small\item\em Set references that B\-A\-M file was aligned to. \end{DoxyCompactList}\item 
+void \hyperlink{classBamExporter_ad5d5a62167c5d61d0cde3dc1bf2bf0d0}{set\-Output\-Dir} (std\-::string output\-Dir)
+\begin{DoxyCompactList}\small\item\em Set directory for writing output files. \end{DoxyCompactList}\item 
 bool \hyperlink{classBamExporter_ac16d3a4dde604a7d4ae0cdfecd656d71}{set\-Barcode\-Length} (int barcode\-Length)
 \begin{DoxyCompactList}\small\item\em Changes barcode length. \end{DoxyCompactList}\item 
 bool \hyperlink{classBamExporter_acf521439c031655b0d719a94f5e9092d}{set\-Min\-Read\-Length} (int min\-Read\-Length)
@@ -145,13 +147,13 @@ Checks lower but not upper bounds, i.\-e. must be greater than 0
 \begin{DoxyReturn}{Returns}
 Operation success/failure 
 \end{DoxyReturn}
-\hypertarget{classBamExporter_a9b705e076ec0bb23a402a2fb9bc86b48}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Header@{set\-Header}}
+\hypertarget{classBamExporter_a0ccdf2f047acc9428a657aacfbca97f1}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Header@{set\-Header}}
 \index{set\-Header@{set\-Header}!BamExporter@{Bam\-Exporter}}
-\subsubsection[{set\-Header}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::set\-Header} (
+\subsubsection[{set\-Header}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Bam\-Exporter\-::set\-Header} (
 \begin{DoxyParamCaption}
 \item[{std\-::string}]{header}
 \end{DoxyParamCaption}
-)}}\label{classBamExporter_a9b705e076ec0bb23a402a2fb9bc86b48}
+)}}\label{classBamExporter_a0ccdf2f047acc9428a657aacfbca97f1}
 
 
 Set B\-A\-M header for output files. 
@@ -161,9 +163,6 @@ User must format header string according to S\-A\-M specifications
 \mbox{\tt in}  & {\em header} & Formatted header. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Operation success/failure 
-\end{DoxyReturn}
 \hypertarget{classBamExporter_acf521439c031655b0d719a94f5e9092d}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Min\-Read\-Length@{set\-Min\-Read\-Length}}
 \index{set\-Min\-Read\-Length@{set\-Min\-Read\-Length}!BamExporter@{Bam\-Exporter}}
 \subsubsection[{set\-Min\-Read\-Length}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::set\-Min\-Read\-Length} (
@@ -183,13 +182,29 @@ Checks lower but not upper bounds, i.\-e. must be greater than 0
 \begin{DoxyReturn}{Returns}
 Operation success/failure 
 \end{DoxyReturn}
-\hypertarget{classBamExporter_a71363ad8a73bbeb381c76412beec2acd}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Refs@{set\-Refs}}
+\hypertarget{classBamExporter_ad5d5a62167c5d61d0cde3dc1bf2bf0d0}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Output\-Dir@{set\-Output\-Dir}}
+\index{set\-Output\-Dir@{set\-Output\-Dir}!BamExporter@{Bam\-Exporter}}
+\subsubsection[{set\-Output\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Bam\-Exporter\-::set\-Output\-Dir} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{output\-Dir}
+\end{DoxyParamCaption}
+)}}\label{classBamExporter_ad5d5a62167c5d61d0cde3dc1bf2bf0d0}
+
+
+Set directory for writing output files. 
+
+Directory must already exist. This is carried out by wrapper script 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em output\-Dir} & Project output directory path. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classBamExporter_a677b8c5352998f664dbe06c722accb33}{\index{Bam\-Exporter@{Bam\-Exporter}!set\-Refs@{set\-Refs}}
 \index{set\-Refs@{set\-Refs}!BamExporter@{Bam\-Exporter}}
-\subsubsection[{set\-Refs}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Bam\-Exporter\-::set\-Refs} (
+\subsubsection[{set\-Refs}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Bam\-Exporter\-::set\-Refs} (
 \begin{DoxyParamCaption}
 \item[{Bam\-Tools\-::\-Ref\-Vector}]{refs}
 \end{DoxyParamCaption}
-)}}\label{classBamExporter_a71363ad8a73bbeb381c76412beec2acd}
+)}}\label{classBamExporter_a677b8c5352998f664dbe06c722accb33}
 
 
 Set references that B\-A\-M file was aligned to. 
@@ -199,9 +214,6 @@ Only required as Bam\-Tools A\-P\-I requires this information despite using unal
 \mbox{\tt in}  & {\em refs} & References (usually empty Ref\-Vector) \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Operation success/failure 
-\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

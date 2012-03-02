@@ -20,14 +20,16 @@ class BamExporter
         TorrentReadStatsBundle stats_;
         int barcodeLength_;
         int minReadLength_;
+        std::string outputDir_;
         std::string header_;
         BamTools::RefVector refs_;
         boost::xpressive::sregex rex_;
 
     public:
         BamExporter(int barcodeLength, int minReadLength);
-        bool setHeader(std::string header);
-        bool setRefs(BamTools::RefVector refs);
+        void setHeader(std::string header);
+        void setRefs(BamTools::RefVector refs);
+        void setOutputDir(std::string outputDir);
         bool setBarcodeLength(int barcodeLength);
         bool setMinReadLength(int minReadLength);
         bool readSampleSheet(std::string sampleSheetName);

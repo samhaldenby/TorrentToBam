@@ -28,7 +28,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">TorrentToBam
-   &#160;<span id="projectnumber">0.3.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">ConvertsanddemultiplexesIonTorrentFASTQfilestoBAMfiles</div>
   </td>
@@ -103,10 +103,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4aa0150613ccac4d289394cfbecf549a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#a4aa0150613ccac4d289394cfbecf549a">BamExporter</a> (int barcodeLength, int minReadLength)</td></tr>
 <tr class="memdesc:a4aa0150613ccac4d289394cfbecf549a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a4aa0150613ccac4d289394cfbecf549a"></a><br/></td></tr>
-<tr class="memitem:a9b705e076ec0bb23a402a2fb9bc86b48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#a9b705e076ec0bb23a402a2fb9bc86b48">setHeader</a> (std::string header)</td></tr>
-<tr class="memdesc:a9b705e076ec0bb23a402a2fb9bc86b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set BAM header for output files.  <a href="#a9b705e076ec0bb23a402a2fb9bc86b48"></a><br/></td></tr>
-<tr class="memitem:a71363ad8a73bbeb381c76412beec2acd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#a71363ad8a73bbeb381c76412beec2acd">setRefs</a> (BamTools::RefVector refs)</td></tr>
-<tr class="memdesc:a71363ad8a73bbeb381c76412beec2acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set references that BAM file was aligned to.  <a href="#a71363ad8a73bbeb381c76412beec2acd"></a><br/></td></tr>
+<tr class="memitem:a0ccdf2f047acc9428a657aacfbca97f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#a0ccdf2f047acc9428a657aacfbca97f1">setHeader</a> (std::string header)</td></tr>
+<tr class="memdesc:a0ccdf2f047acc9428a657aacfbca97f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set BAM header for output files.  <a href="#a0ccdf2f047acc9428a657aacfbca97f1"></a><br/></td></tr>
+<tr class="memitem:a677b8c5352998f664dbe06c722accb33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#a677b8c5352998f664dbe06c722accb33">setRefs</a> (BamTools::RefVector refs)</td></tr>
+<tr class="memdesc:a677b8c5352998f664dbe06c722accb33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set references that BAM file was aligned to.  <a href="#a677b8c5352998f664dbe06c722accb33"></a><br/></td></tr>
+<tr class="memitem:ad5d5a62167c5d61d0cde3dc1bf2bf0d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#ad5d5a62167c5d61d0cde3dc1bf2bf0d0">setOutputDir</a> (std::string outputDir)</td></tr>
+<tr class="memdesc:ad5d5a62167c5d61d0cde3dc1bf2bf0d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set directory for writing output files.  <a href="#ad5d5a62167c5d61d0cde3dc1bf2bf0d0"></a><br/></td></tr>
 <tr class="memitem:ac16d3a4dde604a7d4ae0cdfecd656d71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#ac16d3a4dde604a7d4ae0cdfecd656d71">setBarcodeLength</a> (int barcodeLength)</td></tr>
 <tr class="memdesc:ac16d3a4dde604a7d4ae0cdfecd656d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes barcode length.  <a href="#ac16d3a4dde604a7d4ae0cdfecd656d71"></a><br/></td></tr>
 <tr class="memitem:acf521439c031655b0d719a94f5e9092d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBamExporter.html#acf521439c031655b0d719a94f5e9092d">setMinReadLength</a> (int minReadLength)</td></tr>
@@ -299,12 +301,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9b705e076ec0bb23a402a2fb9bc86b48"></a>
+<a class="anchor" id="a0ccdf2f047acc9428a657aacfbca97f1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classBamExporter.html#a9b705e076ec0bb23a402a2fb9bc86b48">BamExporter::setHeader</a> </td>
+          <td class="memname">void <a class="el" href="classBamExporter.html#a0ccdf2f047acc9428a657aacfbca97f1">BamExporter::setHeader</a> </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>header</em></td><td>)</td>
@@ -322,7 +324,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns:</dt><dd>Operation success/failure </dd></dl>
 
 </div>
 </div>
@@ -353,12 +354,38 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a71363ad8a73bbeb381c76412beec2acd"></a>
+<a class="anchor" id="ad5d5a62167c5d61d0cde3dc1bf2bf0d0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classBamExporter.html#a71363ad8a73bbeb381c76412beec2acd">BamExporter::setRefs</a> </td>
+          <td class="memname">void <a class="el" href="classBamExporter.html#ad5d5a62167c5d61d0cde3dc1bf2bf0d0">BamExporter::setOutputDir</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>outputDir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set directory for writing output files. </p>
+<p>Directory must already exist. This is carried out by wrapper script </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">outputDir</td><td>Project output directory path. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a677b8c5352998f664dbe06c722accb33"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classBamExporter.html#a677b8c5352998f664dbe06c722accb33">BamExporter::setRefs</a> </td>
           <td>(</td>
           <td class="paramtype">BamTools::RefVector&#160;</td>
           <td class="paramname"><em>refs</em></td><td>)</td>
@@ -376,7 +403,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns:</dt><dd>Operation success/failure </dd></dl>
 
 </div>
 </div>
@@ -388,7 +414,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 2 2012 11:26:47 for TorrentToBam by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 2 2012 13:06:09 for TorrentToBam by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

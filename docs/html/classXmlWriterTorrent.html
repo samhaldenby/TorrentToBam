@@ -28,7 +28,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">TorrentToBam
-   &#160;<span id="projectnumber">0.3.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">ConvertsanddemultiplexesIonTorrentFASTQfilestoBAMfiles</div>
   </td>
@@ -101,19 +101,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac8fed4a7428721d51929c2650a461104"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8fed4a7428721d51929c2650a461104"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>XmlWriterTorrent</b> (<a class="el" href="classBamExporter.html">BamExporter</a> *pExporter)</td></tr>
-<tr class="memitem:ac4ea95f4267f69164b3c0ca728f0b423"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4ea95f4267f69164b3c0ca728f0b423"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>createXml</b> ()</td></tr>
+<tr class="memitem:ac8fed4a7428721d51929c2650a461104"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXmlWriterTorrent.html#ac8fed4a7428721d51929c2650a461104">XmlWriterTorrent</a> (<a class="el" href="classBamExporter.html">BamExporter</a> *pExporter)</td></tr>
+<tr class="memdesc:ac8fed4a7428721d51929c2650a461104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac8fed4a7428721d51929c2650a461104"></a><br/></td></tr>
+<tr class="memitem:aa0855fb77ccfc223a0152ced35e6a63d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXmlWriterTorrent.html#aa0855fb77ccfc223a0152ced35e6a63d">createXml</a> (std::string fileName)</td></tr>
+<tr class="memdesc:aa0855fb77ccfc223a0152ced35e6a63d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes run statistics to XML file.  <a href="#aa0855fb77ccfc223a0152ced35e6a63d"></a><br/></td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ac8fed4a7428721d51929c2650a461104"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classXmlWriterTorrent.html#ac8fed4a7428721d51929c2650a461104">XmlWriterTorrent::XmlWriterTorrent</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classBamExporter.html">BamExporter</a> *&#160;</td>
+          <td class="paramname"><em>pExporter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Constructor. </p>
+<p>Sets pointer to <a class="el" href="classBamExporter.html">BamExporter</a> so that grabbing stats from it is possible </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pExporter</td><td>Pointer to <a class="el" href="classBamExporter.html">BamExporter</a> which contains stats bundle </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aa0855fb77ccfc223a0152ced35e6a63d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classXmlWriterTorrent.html#aa0855fb77ccfc223a0152ced35e6a63d">XmlWriterTorrent::createXml</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Writes run statistics to XML file. </p>
+<p>Exports per-barcode information for the run. i.e. sample name, number of reads, number of bases, longest/shortest/average read length </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fileName</td><td>Name of file to export to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>File open operation success/failure. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="XmlWriterTorrent_8hpp_source.html">XmlWriterTorrent.hpp</a></li>
+<li>XmlWriterTorrent.cpp</li>
 </ul>
 </div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 2 2012 11:26:47 for TorrentToBam by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 2 2012 13:06:09 for TorrentToBam by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

@@ -58,8 +58,7 @@ bool BamExporter::setMinReadLength(int minReadLength)
 
 //! User must format header string according to SAM specifications
 //!@param[in] header Formatted header.
-//!@return Operation success/failure
-bool BamExporter::setHeader(std::string header)
+void BamExporter::setHeader(std::string header)
 {
     header_ = header;
 }
@@ -71,13 +70,21 @@ bool BamExporter::setHeader(std::string header)
 //! Only required as BamTools API requires this information despite using unaligned BAM file output.
 //! Therefore, this is usually an empty vector.
 //!@param[in] refs References (usually empty RefVector)
-//!@return Operation success/failure
-bool BamExporter::setRefs(BamTools::RefVector refs)
+void BamExporter::setRefs(BamTools::RefVector refs)
 {
     refs_ = refs;
 }
 
 
+
+//! Set directory for writing output files
+
+//! Directory must already exist. This is carried out by wrapper script
+//!@param[in] outputDir Project output directory path.
+void BamExporter::setOutputDir(std::string outputDir)
+{
+    outputDir_ = outputDir;
+}
 
 //! Reads sample sheet information
 
@@ -112,7 +119,7 @@ bool BamExporter::readSampleSheet(std::string sampleSheetName)
             }
             outputParser_.barcode_output_name_map[barcode]=name;
             BamTools::BamWriter* pO = new BamTools::BamWriter();
-            std::string fileName = name + "_" + barcode + ".bam";
+            std::string fileName = outputDir_ + "/" + name + ".bam";
             pO->Open(fileName, header_, refs_);
             outputParser_.barcode_file_map[barcode]=pO;
 
@@ -122,7 +129,7 @@ bool BamExporter::readSampleSheet(std::string sampleSheetName)
     }
 
     //add non-match stuff
-    std::string fileName = "NonMatched.bam";
+    std::string fileName = outputDir_ + "/NonMatched.bam";
     BamTools::BamWriter* pO = new BamTools::BamWriter();
     pO->Open(fileName, header_, refs_);
     outputParser_.barcode_file_map["NM"]=pO;

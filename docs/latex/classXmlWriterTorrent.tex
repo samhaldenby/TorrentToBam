@@ -4,14 +4,54 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classXmlWriterTorrent_ac8fed4a7428721d51929c2650a461104}{{\bfseries Xml\-Writer\-Torrent} (\hyperlink{classBamExporter}{Bam\-Exporter} $\ast$p\-Exporter)}\label{classXmlWriterTorrent_ac8fed4a7428721d51929c2650a461104}
+\hyperlink{classXmlWriterTorrent_ac8fed4a7428721d51929c2650a461104}{Xml\-Writer\-Torrent} (\hyperlink{classBamExporter}{Bam\-Exporter} $\ast$p\-Exporter)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classXmlWriterTorrent_aa0855fb77ccfc223a0152ced35e6a63d}{create\-Xml} (std\-::string file\-Name)
+\begin{DoxyCompactList}\small\item\em Writes run statistics to X\-M\-L file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classXmlWriterTorrent_ac8fed4a7428721d51929c2650a461104}{\index{Xml\-Writer\-Torrent@{Xml\-Writer\-Torrent}!Xml\-Writer\-Torrent@{Xml\-Writer\-Torrent}}
+\index{Xml\-Writer\-Torrent@{Xml\-Writer\-Torrent}!XmlWriterTorrent@{Xml\-Writer\-Torrent}}
+\subsubsection[{Xml\-Writer\-Torrent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Xml\-Writer\-Torrent\-::\-Xml\-Writer\-Torrent} (
+\begin{DoxyParamCaption}
+\item[{{\bf Bam\-Exporter} $\ast$}]{p\-Exporter}
+\end{DoxyParamCaption}
+)}}\label{classXmlWriterTorrent_ac8fed4a7428721d51929c2650a461104}
+
+
+Constructor. 
+
+Sets pointer to \hyperlink{classBamExporter}{Bam\-Exporter} so that grabbing stats from it is possible 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\-Exporter} & Pointer to \hyperlink{classBamExporter}{Bam\-Exporter} which contains stats bundle \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classXmlWriterTorrent_aa0855fb77ccfc223a0152ced35e6a63d}{\index{Xml\-Writer\-Torrent@{Xml\-Writer\-Torrent}!create\-Xml@{create\-Xml}}
+\index{create\-Xml@{create\-Xml}!XmlWriterTorrent@{Xml\-Writer\-Torrent}}
+\subsubsection[{create\-Xml}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Xml\-Writer\-Torrent\-::create\-Xml} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-Name}
+\end{DoxyParamCaption}
+)}}\label{classXmlWriterTorrent_aa0855fb77ccfc223a0152ced35e6a63d}
+
+
+Writes run statistics to X\-M\-L file. 
+
+Exports per-\/barcode information for the run. i.\-e. sample name, number of reads, number of bases, longest/shortest/average read length 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & Name of file to export to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File open operation success/failure. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classXmlWriterTorrent_ac4ea95f4267f69164b3c0ca728f0b423}{void {\bfseries create\-Xml} ()}\label{classXmlWriterTorrent_ac4ea95f4267f69164b3c0ca728f0b423}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-Xml\-Writer\-Torrent.\-hpp\end{DoxyCompactItemize}
+Xml\-Writer\-Torrent.\-hpp\item 
+Xml\-Writer\-Torrent.\-cpp\end{DoxyCompactItemize}

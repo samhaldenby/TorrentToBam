@@ -68,7 +68,7 @@ void displayHelp()
 {
     std::cout << "*** TorrentToBam ***" << std::endl;
     std::cout << "Function: Takes a fastq file and generates a bam file" << std::endl;
-    std::cout << "Usage : ./TorrentToBam -i in.fq -o out.bam -s sampleSheet.txt -v versionFile.txt" << std::endl;
+    std::cout << "Usage : ./TorrentToBam -i in.fq -o output_directory -r runId -s sampleSheet.txt -v versionFile.txt" << std::endl;
     std::cout << "Options: -b     Barcode length [" << DEFAULT_BARCODE_LENGTH << "]" << std::endl;
     std::cout << "         -m     Min read length after barcode and tag removal [" << DEFAULT_MIN_READ_LENGTH << "]" << std::endl;
     std::cout << std::endl;
@@ -79,13 +79,15 @@ int main(int argc, char**argv)
 {
     Opts opts = getOpts(argc, argv);
     std::string fqInName("");
-    std::string bamOutName("");
+    std::string runId("");
+    std::string outputDirectory("");
     std::string sampleSheetName("");
     std::string versionFileName("");
     int barcodeLength;
     int minReadLength;
     fqInName=opts["-i"];
-    bamOutName=opts["-o"];
+    outputDirectory=opts["-o"];
+    runId=opts["-r"];
     versionFileName=opts["-v"];
     sampleSheetName = opts["-s"];
 
@@ -94,11 +96,12 @@ int main(int argc, char**argv)
     opts["-m"]!="" ? minReadLength = atoi(opts["-m"].c_str()) : minReadLength = minReadLength;
 
 
-    if(fqInName=="" || bamOutName=="" || sampleSheetName=="")
+    if(fqInName=="" || outputDirectory=="" || sampleSheetName=="" || runId=="")
     {
         displayHelp();
         return 0;
     }
+
 
     //restructure command line for putting in bam header
     std::string cmd="@PG\tID:Fastq_to_bam\tPN:TorrentToBam\tDS:Converts FQ files to BAM files and removes tags and barcodes\tVN:0.0.1\tCL:";
@@ -116,6 +119,9 @@ int main(int argc, char**argv)
     //add command line to header
     header+=cmd;
 
+    //add run id
+    std::string runHeader = "@RG\tID:" + runId + "\tCN:EASIH\tPL:IONTORRENT\tSM:" + runId + "\n";
+    header+=runHeader;
     //if version file provided, add to header
     if(versionFileName!="")
     {
@@ -125,6 +131,7 @@ int main(int argc, char**argv)
     BamTools::RefVector refs = BamTools::RefVector();
 
     BamExporter bamExporter(DEFAULT_BARCODE_LENGTH, DEFAULT_MIN_READ_LENGTH);
+    bamExporter.setOutputDir(outputDirectory);
     bamExporter.setBarcodeLength(barcodeLength);
     bamExporter.setMinReadLength(minReadLength);
     bamExporter.setHeader(header);
@@ -171,7 +178,13 @@ int main(int argc, char**argv)
 
     //create xml output
     XmlWriterTorrent xmlWriter(&bamExporter);
-    xmlWriter.createXml();
+    std::string xmlName = outputDirectory + "/" + runId + "_runStatistics.xml";
+
+    if(!xmlWriter.createXml(xmlName.c_str()))
+    {
+        std::cerr << "ERROR\t:\tFailed to open xml output file '" << xmlName << "'" << std::endl;
+        return 1;
+    }
 
     //clean up
     fqReader.close();
